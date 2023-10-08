@@ -6,14 +6,24 @@ const ex001 = () => {
 	return codes.filter(m => /HD-[^52]../.test(m));
 };
 
-// nnn
+// return words with brackets
 const ex002 = () => {
-	const regex1 = /(\[.*?\])/;
-	const regex2 = new RegExp(regex1, 'gm');
-
 	const text = 'We [went] to the cinema where we [saw] a file then [ate] at a restaurant.';
-	
-	const words = text.match(regex2);
+	const words = text.match(/\[.*?\]/g);
+	return words;
+};
+
+// return words without brackets
+const ex003 = () => {
+	const text = 'We [went] to the cinema where we [saw] a file then [ate] at a restaurant.';
+	const words = text.match(/\[.*?\]/g);
+	return words.map(m => m.replace('[','').replace(']',''));
+};
+
+// return words that start with "s" or "w" 
+const ex004 = () => {
+	const text = 'We [went] to the cinema where we [saw] a file then [ate] at a restaurant.';
+	const words = text.match(/\[[sw][^[\]]*?\]/g);
 	return words;
 };
 
@@ -25,4 +35,10 @@ ${ex001().join(', ')}
 
 <h2>ex002</h2>
 ${ex002().join(', ')}
+
+<h2>ex003</h2>
+${ex003().join(', ')}
+
+<h2>ex004</h2>
+${ex004().join(', ')}
 `;
