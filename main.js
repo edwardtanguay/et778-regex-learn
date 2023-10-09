@@ -18,7 +18,7 @@ const ex002 = () => {
 const ex003 = () => {
 	const text = 'We [went] to the cinema where we [saw] a file then [ate] at a restaurant.';
 	const words = text.match(/\[.*?\]/g);
-	return words.map(m => m.replace('[','').replace(']',''));
+	return words.map(m => m.replace('[', '').replace(']', ''));
 };
 
 // return words that start with "s" or "w" 
@@ -33,10 +33,30 @@ const ex005 = () => {
 	const text = 'We [went] to the cinema where we [saw] a file then [ate] at a restaurant, when we [traveled] home on the train.';
 	const text2 = 'Note that these [kinds] of [websites] do not allow you to use npm [packages], or easily use [Sass] or [TypeScript], etc.';
 	const regex = /\[.*?\]/g;
-	const words = text.match(regex).map(m => m.replace('[','').replace(']',''));
+	const words = text.match(regex).map(m => m.replace('[', '').replace(']', ''));
 	const shuffledWords = tools.shuffle(words);
 	const newText = text.replace(regex, '_____');
 	return newText + ' ' + `(${shuffledWords.join(', ')})`;
+};
+
+// swap names
+const ex006 = () => {
+	const names22 = [
+		"Herr Hans Schmidt",
+		"Frau Anna Reinstedt",
+		"Herr Stefan Wagner",
+		"Frau Julia Weber",
+		"Herr Markus Becker"
+	];
+	const names = [
+		"Hans Schmidt",
+		"Anna Reinstedt",
+		"Stefan Wagner",
+		"Julia Weber",
+		"Markus Becker"
+	];
+	const newNames = names.map(m => m.replace(/(\w+)\s(\w+)/, "$2, $1"));
+	return newNames;
 };
 
 document.querySelector('#app').innerHTML = /*html*/ `
@@ -56,4 +76,7 @@ ${ex004().join(', ')}
 
 <h2>ex005</h2>
 ${ex005()}
+
+<h2>ex006</h2>
+${ex006().join('<br>')}
 `;
