@@ -51,6 +51,26 @@ const ex006 = () => {
 	return names.map(m => m.replace(/(\w+)\s(\w+)\s(\w+)/, "$3, $2 ($1)"));
 };
 
+// swap names and transform variable
+const ex007 = () => {
+	const names = [
+		"Herr Hans Schmidt",
+		"Frau Anna Reinstedt",
+		"Herr Stefan Wagner",
+		"Frau Julia Weber",
+		"Herr Markus Becker"
+	];
+	return names.map(name => {
+		const parts = name.match(/(\w+)\s(\w+)\s(\w+)/);
+		if (parts && parts.length === 4) {
+			const [_, title, __, lastName] = parts;
+			const gender = title === "Herr" ? "male" : "female";
+			return `${title} ${lastName} (${gender})`;
+		}
+		return name; // If the format doesn't match, return the original name.
+	});
+};
+
 document.querySelector('#app').innerHTML = /*html*/ `
 <h1>Regex Learn</h2>
 
@@ -71,4 +91,7 @@ ${ex005()}
 
 <h2>ex006</h2>
 ${ex006().join('<br>')}
+
+<h2>ex007</h2>
+${ex007().join('<br>')}
 `;
