@@ -41,21 +41,21 @@ const ex005 = () => {
 
 // swap names
 const ex006 = () => {
-	const names22 = [
+	const names = [
 		"Herr Hans Schmidt",
 		"Frau Anna Reinstedt",
 		"Herr Stefan Wagner",
 		"Frau Julia Weber",
 		"Herr Markus Becker"
 	];
-	const names = [
+	const names33 = [
 		"Hans Schmidt",
 		"Anna Reinstedt",
 		"Stefan Wagner",
 		"Julia Weber",
 		"Markus Becker"
 	];
-	const newNames = names.map(m => m.replace(/(\w+)\s(\w+)/, "$2, $1"));
+	const newNames = names.map(m => m.replace(/(\w+)\s(\w+)\s(\w+)/, "$3, $2 ($1)"));
 	return newNames;
 };
 
