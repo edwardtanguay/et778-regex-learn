@@ -1,4 +1,5 @@
 import './style.css';
+import * as tools from './tools';
 
 // return all codes that don't start with 5 or 2
 const ex001 = () => {
@@ -27,6 +28,17 @@ const ex004 = () => {
 	return words;
 };
 
+// replace words with ______ and list at end in random order
+const ex005 = () => {
+	const text = 'We [went] to the cinema where we [saw] a file then [ate] at a restaurant, when we [traveled] home on the train.';
+	const text2 = 'Note that these [kinds] of [websites] do not allow you to use npm [packages], or easily use [Sass] or [TypeScript], etc.';
+	const regex = /\[.*?\]/g;
+	const words = text.match(regex).map(m => m.replace('[','').replace(']',''));
+	const shuffledWords = tools.shuffle(words);
+	const newText = text.replace(regex, '_____');
+	return newText + ' ' + `(${shuffledWords.join(', ')})`;
+};
+
 document.querySelector('#app').innerHTML = /*html*/ `
 <h1>Regex Learn</h2>
 
@@ -41,4 +53,7 @@ ${ex003().join(', ')}
 
 <h2>ex004</h2>
 ${ex004().join(', ')}
+
+<h2>ex005</h2>
+${ex005()}
 `;
