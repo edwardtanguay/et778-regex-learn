@@ -48,15 +48,7 @@ const ex006 = () => {
 		"Frau Julia Weber",
 		"Herr Markus Becker"
 	];
-	const names33 = [
-		"Hans Schmidt",
-		"Anna Reinstedt",
-		"Stefan Wagner",
-		"Julia Weber",
-		"Markus Becker"
-	];
-	const newNames = names.map(m => m.replace(/(\w+)\s(\w+)\s(\w+)/, "$3, $2 ($1)"));
-	return newNames;
+	return names.map(m => m.replace(/(\w+)\s(\w+)\s(\w+)/, "$3, $2 ($1)"));
 };
 
 document.querySelector('#app').innerHTML = /*html*/ `
